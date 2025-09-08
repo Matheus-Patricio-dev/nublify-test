@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  # ----------------- Banco -----------------
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: todouser
+      POSTGRES_PASSWORD: todopass
+      POSTGRES_DB: tododb
+    ports:
+      - "5433:5432"           # Host:Container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - todonet
+
+  # ----------------- PgAdmin -----------------
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - todonet
+
+  # ----------------- Backend -----------------
+  backend:
+    build: ./backend
+    restart: always
+    environment:
+      DATABASE_URL: "postgresql://todouser:todopass@db:5432/tododb?schema=public"
+      JWT_SECRET: 124bvjamsn1l12fdk1924agj
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    networks:
+      - todonet
+    command: sh -c "npx prisma migrate deploy && npm run dev"
+
+  # ----------------- Frontend -----------------
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - todonet
+    command: sh -c "npm start"
+
+volumes:
+  postgres_data:
+
+networks:
+  todonet:
+    driver: bridge
