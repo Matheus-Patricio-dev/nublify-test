@@ -49,7 +49,26 @@ Aplicação fullstack para teste tecnico da Nublify, consiste em um Todo-app com
 - Git
 
 ### 🐳 Rodar tudo com Docker:
-```bash
-git clone https://github.com/Matheus-Patricio-dev/nublify-test.git
-cd nublify-test
-docker compose up
+
+Siga esses passos para configurar a execução via Docker.
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Matheus-Patricio-dev/nublify-test.git
+   cd nublify-test
+
+2. **Execute o Docker**:
+   ```bash
+    docker compose up
+
+
+Caso queira rodar o projeto localmente, execute os comandos: 
+   ```bash
+    npm install 
+    npm run dev
+
+
+Acesse a aplicação:
+Frontend: http://localhost:3000
+Backend (API): http://localhost:4000
+PGAdmin: http://localhost:5050
