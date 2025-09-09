@@ -52,18 +52,14 @@ Aplicação fullstack para teste tecnico da Nublify, consiste em um Todo-app com
 
 Siga esses passos para configurar a execução via Docker.
 
-1. **Clone the Repository**:
+1. **Clone o repositório**:
    ```bash
    git clone https://github.com/Matheus-Patricio-dev/nublify-test.git
    cd nublify-test
 
 2. **Execute o Docker**:
    ```bash
-    docker compose up
-    
-3. **Parar o Docker**:
-   ```bash
-    docker compose down
+    docker compose up    
 
 4. **Acesse o app**
     ```bash
