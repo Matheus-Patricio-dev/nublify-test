@@ -37,3 +37,12 @@ export const login = async (req: Request, res: Response) => {
     return res.status(400).json({ error: error.message });
   }
 };
+
+export const getAll = async (req: Request, res: Response) => {
+  try {
+    const users = await userService.getAll();
+    return res.json(users); // retorna lista de usuários
+  } catch (error: any) {
+    return res.status(400).json({ error: error.message });
+  }
+};

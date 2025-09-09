@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Auth from './components/Auth';
-
-
+import AuthPage from './pages/authPage';
+import TaskList from './pages/taskList';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Auth />} />
+        <Route path="/" element={<AuthPage />} />
+        <Route path="/tasks" element={<TaskList />} />
       </Routes>
     </Router>
   );

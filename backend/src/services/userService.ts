@@ -42,4 +42,15 @@ export class UserService {
 
     return { user, token };
   }
+  async getAll() {
+    const users = await userRepository.getAll();
+
+    // O repository já retorna sem senha, mas garantimos aqui
+    return users.map(user => ({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt,
+    }));
+  }
 }

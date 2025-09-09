@@ -56,7 +56,7 @@ services:
       - backend
     networks:
       - todonet
-    command: sh -c "npm start"
+    command: ["serve", "-s", "dist", "-l", "3000"]
 
 volumes:
   postgres_data:

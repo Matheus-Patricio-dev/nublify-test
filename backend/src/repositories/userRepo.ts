@@ -23,4 +23,16 @@ export class UserRepository {
 
     return new User(user.id, user.name, user.email, user.password);
   }
+
+  async getAll() {
+    const users = await prisma.user.findMany({
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            createdAt: true,
+          },
+        });
+      return users
+  }
 }

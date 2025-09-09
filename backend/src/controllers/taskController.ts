@@ -33,21 +33,35 @@ export const createTask = async (req: Request, res: Response) => {
 
 export const updateTask = async (req: Request, res: Response) => {
   const userId = req.user?.id;
-  if (!userId) return res.status(401).json({ error: 'Usuário não autenticado' });
+
+  if (!userId) {
+    return res.status(401).json({ error: 'Usuário não autenticado' });
+  }
 
   const { id } = req.params;
+  const taskId = parseInt(id, 10);  // Converte o id para número
+  
+  if (isNaN(taskId)) {
+    return res.status(400).json({ error: 'ID inválido' });
+  }
+
   const { title, description, status } = req.body;
 
   try {
-    const updatedTask = await taskService.updateTask(userId, { title, description, status });
+    // Passando o taskId como número
+    const updatedTask = await taskService.updateTask(taskId, { title, description, status });
+
     if (!updatedTask) {
       return res.status(404).json({ error: 'Tarefa não encontrada' });
     }
+
     return res.json(updatedTask);
   } catch (error) {
     return res.status(400).json({ error: 'Erro ao atualizar tarefa' });
   }
 };
+
+
 
 export const deleteTask = async (req: Request, res: Response) => {
   const userId = req.user?.id;
