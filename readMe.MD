@@ -60,11 +60,22 @@ Siga esses passos para configurar a execução via Docker.
 2. **Execute o Docker**:
    ```bash
     docker compose up
+    
+3. **Parar o Docker**:
+   ```bash
+    docker compose down
 
-Acesse a aplicação:
-Frontend: http://localhost:3000
-Backend (API): http://localhost:4000
-PGAdmin: http://localhost:5050
+4. **Acesse o app**
+    ```bash
+    Frontend: http://localhost:3000
+    Backend (API): http://localhost:4000
+    PGAdmin: http://localhost:5050
+    Email: admin@admin.com
+    Senha: admin
+
+5. **Caso queria parar o docker**
+    ```bash
+    docker compose down
 
 Caso queira rodar o projeto localmente, execute os comandos: 
    ```bash
