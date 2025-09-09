@@ -61,6 +61,10 @@ Siga esses passos para configurar a execução via Docker.
    ```bash
     docker compose up
 
+Acesse a aplicação:
+Frontend: http://localhost:3000
+Backend (API): http://localhost:4000
+PGAdmin: http://localhost:5050
 
 Caso queira rodar o projeto localmente, execute os comandos: 
    ```bash
@@ -68,7 +72,3 @@ Caso queira rodar o projeto localmente, execute os comandos:
     npm run dev
 
 
-Acesse a aplicação:
-Frontend: http://localhost:3000
-Backend (API): http://localhost:4000
-PGAdmin: http://localhost:5050
